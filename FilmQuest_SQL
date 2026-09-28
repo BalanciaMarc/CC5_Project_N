@@ -13,7 +13,7 @@ CREATE TABLE CALENDAR (
 CREATE TABLE ACCOUNT (
     user_id INT NOT NULL,
     username VARCHAR(50) NOT NULL,
-    country_name VARCHAR(50),
+    country_name VARCHAR(50) NOT NULL,
     registration_date DATE NOT NULL,
     subscription_type VARCHAR(20) NOT NULL,
     CONSTRAINT pk_user PRIMARY KEY (user_id)
@@ -24,8 +24,8 @@ CREATE TABLE MOVIE (
     movie_description VARCHAR(500) NOT NULL,
     title VARCHAR(255) NOT NULL,
     genre VARCHAR(50) NOT NULL,
-    duration INT,
-    release_date DATE,
+    duration INT NOT NULL,
+    release_date DATE NOT NULL,
     CONSTRAINT pk_movie PRIMARY KEY (movie_id)
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE RATING (
     movie_id INT NOT NULL,
     user_id INT NOT NULL,
     rating FLOAT NOT NULL,
-    review VARCHAR(1000),
+    review VARCHAR(1000) NOT NULL,
     CONSTRAINT pk_rating PRIMARY KEY (rating_id),
     CONSTRAINT fk_rating_movie FOREIGN KEY (movie_id) REFERENCES MOVIE(movie_id),
     CONSTRAINT fk_rating_user FOREIGN KEY (user_id) REFERENCES ACCOUNT(user_id),
@@ -60,11 +60,11 @@ VALUES
 (2, 'Sophie', 'France', DATE '2025-03-22', 'Premium'),
 (3, 'Makeawishkid', 'USA', DATE '2026-06-03', 'Basic');
 
-INSERT INTO MOVIE (movie_id, movie_description, title, genre, duration, release_date)
+INSERT INTO MOVIE (movie_id, title, genre, movie_description, duration, release_date)
 VALUES
-(1001, 'Monster action film about humanity using giant robots to fight colossal sea creatures.', 'Pacific Rim', 'Sci-Fi', 118.5, DATE '2024-06-10'),
-(1002, 'Sci-fi anime series set in Night City.', 'Cyberpunk Edgerunners', 'Cyberpunk', 25, DATE '2023-11-02'),
-(1003, 'Human boxers have been replaced by giant robots.', 'Real Steel', 'Sci-Fi', 128, DATE '2011-10-07');
+(1001, 'Pacific Rim', 'Sci-Fi', 'Monster action film about humanity using giant robots to fight colossal sea creatures.', 118.5, DATE '2024-06-10'),
+(1002, 'Cyberpunk Edgerunners', 'Cyberpunk', 'Sci-fi anime series set in Night City.', 25, DATE '2023-11-02'),
+(1003, 'Real Steel', 'Sci-Fi', 'Human boxers have been replaced by giant robots.', 128, DATE '2011-10-07');
 
 INSERT INTO CALENDAR (time_id, year, month_name, week_label, time_description)
 VALUES
