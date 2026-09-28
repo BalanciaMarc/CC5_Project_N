@@ -90,3 +90,7 @@ SELECT * FROM stream;
 SELECT * FROM calendar;
 SELECT * FROM movie;
 SELECT * FROM rating;
+
+-- DELETE
+
+--UPDATE
