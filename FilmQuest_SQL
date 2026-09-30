@@ -95,5 +95,17 @@ SELECT title, genre, movie_id
 FROM movie;
 
 -- UPDATE
+UPDATE ACCOUNT
+SET subscription_type = 'Premium'
+WHERE user_id = 1;
+
+UPDATE MOVIE
+SET genre = 'Action'
+WHERE movie_id = 1001;
 
 -- DELETE
+DELETE FROM RATING
+WHERE rating_id = 301;
+
+DELETE FROM STREAM
+WHERE stream_id = 3;
