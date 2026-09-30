@@ -21,9 +21,9 @@ CREATE TABLE ACCOUNT (
 
 CREATE TABLE MOVIE (
     movie_id INT NOT NULL,
-    movie_description VARCHAR(500) NOT NULL,
     title VARCHAR(255) NOT NULL,
     genre VARCHAR(50) NOT NULL,
+    movie_description VARCHAR(500) NOT NULL,
     duration INT NOT NULL,
     release_date DATE NOT NULL,
     CONSTRAINT pk_movie PRIMARY KEY (movie_id)
@@ -84,13 +84,16 @@ VALUES
 (201, 1002, 2, 8.3, 'Sad, thanks for that'),
 (301, 1003, 3, 7.9, 'Great visuals and fighting');
 
--- READ
+-- SELECT/READ
 SELECT * FROM account;
 SELECT * FROM stream;
 SELECT * FROM calendar;
 SELECT * FROM movie;
 SELECT * FROM rating;
 
--- DELETE
+SELECT title, genre, movie_id
+FROM movie;
 
---UPDATE
+-- UPDATE
+
+-- DELETE
