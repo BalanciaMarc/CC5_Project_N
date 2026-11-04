@@ -1,0 +1,53 @@
+CREATE TABLE Student (
+    StudentID VARCHAR(50) NOT NULL,
+    StudentName Text NOT NULL,
+    CONSTRAINT pk_Student PRIMARY KEY (StudentID)
+);
+
+CREATE TABLE Subject (
+    SubjectID VARCHAR(50) NOT NULL,
+    SubjectName Text NOT NULL,
+    CONSTRAINT pk_Subject PRIMARY KEY (SubjectID)
+);
+
+CREATE TABLE Enrollment (
+    EnrollmentID VARCHAR(50) NOT NULL,
+    StudentID VARCHAR(50) NOT NULL,
+    SubjectID VARCHAR(50) NOT NULL,
+    Grade INT NOT NULL,
+    CONSTRAINT pk_Subject PRIMARY KEY (SubjectID)
+);
+
+INSERT INTO Student (StudentID, StudentName)
+VALUES
+(S001, 'Ana Cruz'),
+(S002, 'John Reyez'),
+(S003, 'Marcia Garcia'),
+(S004, 'Peter Santos'),
+(S005, 'Jane Dela Cruz'),
+(S006, 'Carlo Mendoza');
+
+INSERT INTO Subject (SubjectID, SubjectName)
+VALUES
+(SUB001, 'Database'),
+(SUB002, 'Programming'),
+(SUB003, 'Statistics'),
+(SUB004, 'Web Development'),
+(SUB005, 'Information Management');
+
+INSERT INTO Enrollment (EnrollmentID, StudentID, SubjectID, Grade)
+VALUES
+(E001, S001, SUB001, 92),
+(E002, S001, SUB002, 88),
+(E003, S001, SUB005, 90),
+(E004, S002, SUB003, 85),
+(E005, S002, SUB001, 87),
+(E006, S003, SUB002, 95),
+(E007, S003, SUB004, 91),
+(E008, S004, SUB002, 82),
+(E009, S004, SUB005, 86),
+(E010, S005, SUB003, 89),
+(E011, S005, SUB004, 94),
+(E012, S006, SUB001, 88),
+(E013, S006, SUB002, 90),
+(E014, S006, SUB003, 91);
