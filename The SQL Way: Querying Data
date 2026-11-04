@@ -1,6 +1,6 @@
 CREATE TABLE Student (
     Student_ID VARCHAR(50) NOT NULL,
-    StudentName Text NOT NULL,
+    StudentName VARCHAR(50) NOT NULL,
     CONSTRAINT pk_Student PRIMARY KEY (Student_ID)
 );
 
@@ -20,12 +20,12 @@ CREATE TABLE Enrollment (
 
 INSERT INTO Student (Student_ID, StudentName)
 VALUES
-(S001, 'Ana Cruz'),
-(S002, 'John Reyez'),
-(S003, 'Marcia Garcia'),
-(S004, 'Peter Santos'),
-(S005, 'Jane Dela Cruz'),
-(S006, 'Carlo Mendoza');
+('S001', 'Ana Cruz'),
+('S002', 'John Reyez'),
+('S003', 'Marcia Garcia'),
+('S004', 'Peter Santos'),
+('S005', 'Jane Dela Cruz'),
+('S006', 'Carlo Mendoza');
 
 INSERT INTO Subject (Subject_ID, SubjectName)
 VALUES
