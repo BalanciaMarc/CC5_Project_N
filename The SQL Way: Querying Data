@@ -49,6 +49,13 @@ values
 ('E013', 'S006', 'SUB002', 90),
 ('E014', 'S006', 'SUB003', 91);
 
-Select * from student
-Select * from subject
-Select * from Enrollment
+Select * from student;
+Select * from subject;
+Select * from Enrollment;
+
+Select Grade
+from ENROLLMENT
+where grade = 90
+
+Select studentname
+from table_student; 
