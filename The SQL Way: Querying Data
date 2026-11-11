@@ -53,9 +53,13 @@ Select * from student;
 Select * from subject;
 Select * from Enrollment;
 
-Select Grade
+Select StudentID, Grade
 from ENROLLMENT
 where grade = 90
 
 Select studentname
-from table_student; 
+from Student
+
+Select SubjectID, Count(90) AS Grade
+From Enrollment
+Group by SubjectID
