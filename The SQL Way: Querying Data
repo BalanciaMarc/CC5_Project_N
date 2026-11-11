@@ -1,65 +1,56 @@
-create table STUDENT (
-    StudentID VARCHAR(4) primary key NOT NULL,
-    StudentName VARCHAR(45) NOT NULL
+CREATE DATABASE IF NOT EXISTS school_db;
+USE school_db;
+
+CREATE TABLE Student (
+    StudentID   VARCHAR(10),
+    StudentName VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_student PRIMARY KEY (StudentID)
 );
 
-create table SUBJECT (
-    SubjectID VARCHAR(6) primary key NOT NULL,
-    SubjectName VARCHAR(45) NOT NULL
+CREATE TABLE Subject (
+    SubjectID   VARCHAR(10),
+    SubjectName VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_subject PRIMARY KEY (SubjectID)
 );
 
-create table ENROLLMENT (
-    EnrollmentID VARCHAR(4) primary key NOT NULL,
-    StudentID VARCHAR(4) NOT NULL,
-    SubjectID VARCHAR(6) NOT NULL,
-    Grade INT NOT NULL
+CREATE TABLE Enrollment (
+    EnrollmentID VARCHAR(10),
+    StudentID    VARCHAR(10) NOT NULL,
+    SubjectID    VARCHAR(10) NOT NULL,
+    Grade        INT,
+    CONSTRAINT pk_enrollment PRIMARY KEY (EnrollmentID),
+    CONSTRAINT fk_enrollment_student FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    CONSTRAINT fk_enrollment_subject FOREIGN KEY (SubjectID) REFERENCES Subject(SubjectID)
 );
 
-INSERT INTO STUDENT (StudentID, StudentName)
-values 
-('S001','Ana Cruz'),
-('S002','John Reyes'),
-('S003','Maria Garcia'),
-('S004','Peter Santos'),
-('S005','Jane Dela Cruz'),
-('S006','Carlo Mendoza');
+INSERT INTO Student (StudentID, StudentName) VALUES
+('S001', 'Ana Cruz'), ('S002', 'John Reyes'), ('S003', 'Maria Garcia'),
+('S004', 'Peter Santos'), ('S005', 'Jane Dela Cruz'), ('S006', 'Carlo Mendoza');
 
-INSERT INTO SUBJECT (SubjectID, SubjectName)
-values 
-('SUB001','Database'),
-('SUB002','Programming'),
-('SUB003','Statistics'),
-('SUB004','Web Development'),
-('SUB005','Information Management');
+INSERT INTO Subject (SubjectID, SubjectName) VALUES
+('SUB001', 'Database'), ('SUB002', 'Programming'), ('SUB003', 'Statistics'),
+('SUB004', 'Web Development'), ('SUB005', 'Information Management');
 
-INSERT INTO ENROLLMENT (EnrollmentID, StudentID, SubjectID, Grade)
-values 
-('E001', 'S001', 'SUB001', 92),
-('E002', 'S001', 'SUB002', 88),
-('E003', 'S001', 'SUB005', 90),
-('E004', 'S002', 'SUB003', 85),
-('E005', 'S002', 'SUB001', 87),
-('E006', 'S003', 'SUB001', 95),
-('E007', 'S003', 'SUB004', 91),
-('E008', 'S004', 'SUB002', 82),
-('E009', 'S004', 'SUB005', 86),
-('E010', 'S005', 'SUB003', 89),
-('E011', 'S005', 'SUB004', 94),
-('E012', 'S006', 'SUB001', 88),
-('E013', 'S006', 'SUB002', 90),
-('E014', 'S006', 'SUB003', 91);
+INSERT INTO Enrollment (EnrollmentID, StudentID, SubjectID, Grade) VALUES
+('E001','S001','SUB001',92), ('E002','S001','SUB002',88), ('E003','S001','SUB005',90),
+('E004','S002','SUB003',85), ('E005','S002','SUB001',87), ('E006','S003','SUB001',95),
+('E007','S003','SUB004',91), ('E008','S004','SUB002',82), ('E009','S004','SUB005',86),
+('E010','S005','SUB003',89), ('E011','S005','SUB004',94), ('E012','S006','SUB001',88),
+('E013','S006','SUB002',90), ('E014','S006','SUB003',91);
 
 Select * from student;
 Select * from subject;
 Select * from Enrollment;
 
-Select StudentID, Grade
-from ENROLLMENT
-where grade = 90
+Use SchoolDB;
+Select count(*) As TotalNumberofStudents,
+max(grade) as HighestGrade,
+min(grade) As LowestGrade,
+round(AVG(Grade),2) As AverageGrade
+From Enrollment;
 
-Select studentname
-from Student
-
-Select SubjectID, Count(90) AS Grade
-From Enrollment
-Group by SubjectID
+SELECT S.StudentName, AVG(E.Grade) AS AverageGrade 
+FROM Student S
+JOIN Enrollment E ON S.StudentID = E.StudentID 
+GROUP BY S.StudentID, S.StudentName 
+HAVING AVG(E.Grade) > 90;
