@@ -42,6 +42,7 @@ Select * from student;
 Select * from subject;
 Select * from Enrollment;
 
+-- 1
 Use SchoolDB;
 Select count(*) As TotalNumberofStudents,
 max(grade) as HighestGrade,
@@ -49,8 +50,11 @@ min(grade) As LowestGrade,
 round(AVG(Grade),2) As AverageGrade
 From Enrollment;
 
+-- 2
 SELECT S.StudentName, AVG(E.Grade) AS AverageGrade 
 FROM Student S
 JOIN Enrollment E ON S.StudentID = E.StudentID 
 GROUP BY S.StudentID, S.StudentName 
 HAVING AVG(E.Grade) > 90;
+
+-- 3
