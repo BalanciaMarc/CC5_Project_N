@@ -43,7 +43,6 @@ CREATE TABLE RATING (
     UNIQUE (user_id, movie_id)
 );
 
-
 INSERT INTO ACCOUNT
 (user_id, username, country_name, registration_date, subscription_type)
 VALUES
@@ -51,16 +50,13 @@ VALUES
 (2, 'Sophie', 'France', DATE '2025-03-22', 'Premium'),
 (3, 'Makeawishkid', 'USA', DATE '2026-06-03', 'Basic');
 
-
 INSERT INTO MOVIE
 (movie_id, title, genre, movie_description, duration, release_date)
 VALUES
 (1001, 'Pacific Rim', 'Sci-Fi', 'Monster action film about humanity using giant robots to fight colossal sea creatures.',
  118.5, DATE '2024-06-10'),
-
 (1002, 'Cyberpunk Edgerunners', 'Cyberpunk', 'Sci-fi anime series set in Night City.',
  25, DATE '2023-11-02'),
-
 (1003, 'Real Steel', 'Sci-Fi', 'Human boxers have been replaced by giant robots.',
  128, DATE '2011-10-07');
 
@@ -83,7 +79,6 @@ VALUES
 (101, 1001, 1, 9.0, 'Absolute Cinema'),
 (201, 1002, 2, 8.3, 'Sad, thanks for that'),
 (301, 1003, 3, 7.9, 'Great visuals and fighting');
-
 
 SELECT * FROM account;
 SELECT * FROM stream;
